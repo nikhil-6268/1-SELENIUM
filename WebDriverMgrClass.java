@@ -10,6 +10,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class WebDriverMgrClass {
 
 	public static void main(String[] args) {
+		//We have to add webdriver manager dependency in pom.xml file of same project the link for this is :- webdrivermanager maven and paste it on the xml file
 //		chrome driver
 //		 System.setProperty("webdriver.chrome.driver","D:\\New folder\\chromedriver-win64\\chromedriver.exe");
 //		 WebDriver driver = new ChromeDriver();
