@@ -1,0 +1,50 @@
+package DemoTest.Test1;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class goibibo_Date_Picker {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.edge.driver", "D:\\BrowserDriver\\edgedriver_win64\\msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
+		String expectedDay = "7";
+		String expectedMonthYear = "January 2025";
+		
+		driver.manage().window().maximize();
+		driver.get("https://www.goibibo.com/");
+		driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/div/div[2]/span/span")).click();
+		WebElement datepicker = driver.findElement(By.xpath("//span[@class='sc-12foipm-8 eXKWBG fswDownArrow']"));
+		datepicker.click();
+		while(true)
+		{
+			// displaying Claendar Month and Year in one Xpath operations 7 jan 2025
+		//	String CalendarDay = driver.findElement(By.xpath(""));
+			String CalendarMonthYear = driver.findElement(By.xpath("//*[@id=\"root\"]/div[4]/div/div/div[2]/div[3]/div[2]/div[2]/div/div/div[2]/div[1]/div[1]")).getText();
+			
+			if(CalendarMonthYear.equals(expectedMonthYear))
+			{
+				List <WebElement> daysList = driver.findElements(By.xpath("//p[@class=\'fsw__date\']"));
+				for(WebElement e:daysList)
+				{
+					String CalendarDay = e.getText();
+					if(CalendarDay.equals(expectedDay))
+					{
+						e.click();
+						break;
+					}
+				}
+				break;
+		}
+			else
+			{
+				driver.findElement(By.xpath("//span[@class='DayPicker-NavButton DayPicker-NavButton--next']")).click();
+			}
+	}
+
+}
+}
