@@ -18,6 +18,7 @@ public class mouse_operations {
 	  
 	  Actions act = new Actions(driver);
 	  act.contextClick(button).perform();// right click
+//        act.moveToElement(target).perform(); // for moving the cursor to the element
 	 
 	}
 
